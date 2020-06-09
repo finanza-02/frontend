@@ -1,0 +1,14 @@
+.home {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: scroll;
+}
+
+.home__card {
+  z-index: -1;
+  margin: 1rem;
+}

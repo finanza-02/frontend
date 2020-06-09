@@ -1,0 +1,7 @@
+<div class="layout">
+  <app-header class="layout__header" (toggleMenu)="toggleMenu()"></app-header>
+  <div class="layout__content">
+    <app-menu class="layout__menu" *ngIf="toggle"></app-menu>
+    <router-outlet></router-outlet>
+  </div>
+</div>

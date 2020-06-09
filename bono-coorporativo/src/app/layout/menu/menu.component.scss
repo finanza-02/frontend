@@ -1,0 +1,22 @@
+@import "src/styles-color.scss";
+
+.menu {
+  height: 90vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: $primary;
+  color: $text;
+}
+.menu__link {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.menu__link:hover {
+  background-color: #0f1d6e;
+}
