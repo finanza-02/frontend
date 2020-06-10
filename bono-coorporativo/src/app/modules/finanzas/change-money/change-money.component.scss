@@ -1,0 +1,35 @@
+.change-money {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-money__pair-element-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-money__element-input {
+  margin: 0.5rem;
+  width: 45%;
+}
+
+.change-money__element-select {
+  margin: 0.5rem;
+  width: 25%;
+}
+
+.change-money__convert {
+  height: auto;
+  width: auto;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,48 @@
+<div class="change-money">
+  <div class="change-money__pair-element-container">
+    <mat-form-field class="change-money__element-input" appearance="outline">
+      <mat-label>Monto a convertir</mat-label>
+      <input
+        matInput
+        placeholder="Monto a convertir"
+        [(ngModel)]="coinSelected.amount"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="change-money__element-select">
+      <mat-label>Moneda</mat-label>
+      <mat-select [(ngModel)]="coinSelected.value">
+        <mat-option *ngFor="let coin of coins" [value]="coin.value">
+          {{ coin.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-icon
+    class="change-money__convert"
+    aria-hidden="false"
+    aria-label="Example home icon"
+    >arrow_downward</mat-icon
+  >
+
+  <div class="change-money__pair-element-container">
+    <mat-form-field class="change-money__element-input" appearance="outline">
+      <mat-label>Monto convertido</mat-label>
+      <input
+        matInput
+        placeholder="Monto convertido"
+        [(ngModel)]="coinSelected.amount"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="change-money__element-select">
+      <mat-label>Moneda</mat-label>
+      <mat-select [(ngModel)]="coinSelected.value">
+        <mat-option *ngFor="let coin of coins" [value]="coin.value">
+          {{ coin.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
