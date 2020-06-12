@@ -1,9 +1,27 @@
+@import "src/styles-color.scss";
+
 .header {
   height: 10vh;
-  width: 100vw;
+  width: 10vw;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding-left: 1rem;
+}
+
+.header__title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $primary;
 }

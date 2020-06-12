@@ -1,3 +1,5 @@
+@import "src/styles-color.scss";
+
 .change-money {
   width: 100vw;
   height: 90vh;
@@ -8,7 +10,7 @@
 }
 
 .change-money__pair-element-container {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -25,11 +27,41 @@
   width: 25%;
 }
 
-.change-money__convert {
+.change-money__convert-icon {
   height: auto;
   width: auto;
   font-size: 3.5rem;
   font-weight: 900;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  color: $primary;
+  padding: 0.5rem;
+}
+
+.change-money__bond-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.change-money__bond-container--border {
+  border: solid thin $primary;
+}
+
+.change-money__convert-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-money__additional-information {
+  padding: 0.5rem;
+  font-style: italic;
 }

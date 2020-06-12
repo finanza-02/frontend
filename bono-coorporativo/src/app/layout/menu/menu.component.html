@@ -1,17 +1,26 @@
 <div class="menu">
-  <div class="menu__link">
-    <a routerLink="/finanzas">Home</a>
+  <div class="menu__link" (click)="title(null, '/finanzas')">
+    Home
   </div>
-  <div class="menu__link">
-    <a routerLink="/cambio-moneda">Cambiar Moneda</a>
+  <div
+    class="menu__link"
+    (click)="title('Cambio de Moneda', '/finanzas/cambio-moneda')"
+  >
+    Cambiar Moneda
   </div>
-  <div class="menu__link">
-    <a routerLink="/conversion-tasa">Convertir Tasas</a>
+  <div
+    class="menu__link"
+    (click)="title('Conversión de tasas', '/finanzas/conversion-tasa')"
+  >
+    Convertir Tasas
   </div>
-  <div class="menu__link">
-    <a routerLink="/calculo-bono">Calcular Bono</a>
+  <div
+    class="menu__link"
+    (click)="title('Calculo de Bono', '/finanzas/calculo-bono')"
+  >
+    Calcular Bono
   </div>
-  <div class="menu__link">
-    <a routerLink="/login">Salir</a>
+  <div class="menu__link" (click)="title(null, '/login')">
+    Salir
   </div>
 </div>

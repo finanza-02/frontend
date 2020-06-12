@@ -9,12 +9,15 @@
   align-items: flex-start;
   background-color: $primary;
   color: $text;
+  position: relative;
+  z-index: 1;
 }
 .menu__link {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
   padding-left: 1rem;
+  cursor: pointer;
 }
 
 .menu__link:hover {

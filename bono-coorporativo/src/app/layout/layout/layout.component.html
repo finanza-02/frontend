@@ -1,7 +1,15 @@
 <div class="layout">
-  <app-header class="layout__header" (toggleMenu)="toggleMenu()"></app-header>
+  <app-header
+    class="layout__header"
+    (toggleMenu)="toggleMenu()"
+    [title]="title"
+  ></app-header>
   <div class="layout__content">
-    <app-menu class="layout__menu" *ngIf="toggle"></app-menu>
+    <app-menu
+      class="layout__menu"
+      *ngIf="toggle"
+      (eventTitle)="changeTitle($event)"
+    ></app-menu>
     <router-outlet></router-outlet>
   </div>
 </div>

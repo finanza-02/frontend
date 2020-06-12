@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
   toggle: boolean;
+  title: string;
 
   constructor() {}
 
@@ -16,5 +17,9 @@ export class LayoutComponent implements OnInit {
 
   toggleMenu() {
     this.toggle = !this.toggle;
+  }
+  changeTitle($event) {
+    this.title = $event;
+    console.log($event);
   }
 }

@@ -11,38 +11,79 @@
 
     <mat-form-field class="change-money__element-select">
       <mat-label>Moneda</mat-label>
-      <mat-select [(ngModel)]="coinSelected.value">
-        <mat-option *ngFor="let coin of coins" [value]="coin.value">
+      <mat-select [(ngModel)]="coinSelected.key">
+        <mat-option *ngFor="let coin of coins" [value]="coin.key">
           {{ coin.description }}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
-  <mat-icon
-    class="change-money__convert"
-    aria-hidden="false"
-    aria-label="Example home icon"
-    >arrow_downward</mat-icon
+  <div class="change-money__convert-container">
+    <mat-icon
+      class="change-money__convert-icon"
+      aria-hidden="false"
+      aria-label="Example home icon"
+      (click)="converterCoin()"
+      >arrow_downward</mat-icon
+    >
+    <div
+      class="change-money__additional-information"
+      *ngIf="coinConverted.lastChange != null"
+    >
+      <p>
+        La tasa de cambio fue de
+        {{
+          coinConverted.lastChange.change != null
+            ? coinConverted.lastChange.change
+            : coinConverted.lastChange.defaultChange
+        }}
+        por cada un {{ coinSelected.description }}
+      </p>
+      <p *ngIf="coinConverted.lastChange.dateUpdate != null">
+        Esta tasa fue actualizado desde el banco de origen de la moneda
+        {{ coinSelected.description }} a las
+        {{ coinConverted.lastChange.dateUpdate }}
+      </p>
+
+      <p *ngIf="coinConverted.lastChange.defaultChange != null">
+        Esta tasa es de caracter referencial
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="change-money__bond-container"
+    [ngClass]="{
+      'change-money__bond-container--border': coinConverted.amount > 0
+    }"
   >
+    <div class="change-money__pair-element-container">
+      <mat-form-field class="change-money__element-input" appearance="outline">
+        <mat-label>Monto convertido</mat-label>
+        <input
+          matInput
+          placeholder="Monto convertido"
+          [(ngModel)]="coinConverted.amount"
+        />
+      </mat-form-field>
 
-  <div class="change-money__pair-element-container">
-    <mat-form-field class="change-money__element-input" appearance="outline">
-      <mat-label>Monto convertido</mat-label>
-      <input
-        matInput
-        placeholder="Monto convertido"
-        [(ngModel)]="coinSelected.amount"
-      />
-    </mat-form-field>
-
-    <mat-form-field class="change-money__element-select">
-      <mat-label>Moneda</mat-label>
-      <mat-select [(ngModel)]="coinSelected.value">
-        <mat-option *ngFor="let coin of coins" [value]="coin.value">
-          {{ coin.description }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field class="change-money__element-select">
+        <mat-label>Moneda</mat-label>
+        <mat-select [(ngModel)]="coinConverted.key">
+          <mat-option *ngFor="let coin of coins" [value]="coin.key">
+            {{ coin.description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button
+      *ngIf="coinConverted.amount > 0 && coinConverted.key != ''"
+      mat-stroked-button
+      color="primary"
+      (click)="bond()"
+    >
+      Guardar
+    </button>
   </div>
 </div>
