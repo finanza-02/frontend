@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,12 +10,24 @@ export class MenuComponent implements OnInit {
   @Output()
   eventTitle: EventEmitter<any> = new EventEmitter();
 
+  @Input()
+  toggle: boolean;
+
+  @Output()
+  eventToggle: EventEmitter<any> = new EventEmitter();
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   title(content, router) {
+    this.openAndCloseMenu();
     this.eventTitle.emit(content);
     this.router.navigate([router]);
+  }
+
+  openAndCloseMenu() {
+    this.toggle = !this.toggle;
+    this.eventToggle.emit(this.toggle);
   }
 }

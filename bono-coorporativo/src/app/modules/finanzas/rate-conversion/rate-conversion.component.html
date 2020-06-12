@@ -1,0 +1,51 @@
+<div class="conversion-rate">
+  <div class="conversion-rate__pair-element-container">
+    <mat-form-field class="conversion-rate__element-input" appearance="outline">
+      <mat-label>Tasa Nominal</mat-label>
+      <input type="number" matInput placeholder="Tasa Nominal" />
+    </mat-form-field>
+
+    <mat-form-field class="conversion-rate__element-select">
+      <mat-label>Tasa Nominal</mat-label>
+      <mat-select>
+        <mat-option>
+          TNS
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-icon
+    class="conversion-rate__convert-icon"
+    aria-hidden="false"
+    aria-label="Example home icon"
+    (click)="convert()"
+    >arrow_downward</mat-icon
+  >
+
+  <div
+    class="conversion-rate__bond-container conversion-rate__bond-container--border"
+  >
+    <div class="conversion-rate__pair-element-container">
+      <mat-form-field
+        class="conversion-rate__element-input"
+        appearance="outline"
+      >
+        <mat-label>Tasa Efectiva</mat-label>
+        <input type="number" matInput placeholder="Tasa Efectiva" />
+      </mat-form-field>
+
+      <mat-form-field class="conversion-rate__element-select">
+        <mat-label>Tasa Efectiva</mat-label>
+        <mat-select>
+          <mat-option>
+            TEA
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-stroked-button color="primary" (click)="bond()">
+      Guardar
+    </button>
+  </div>
+</div>

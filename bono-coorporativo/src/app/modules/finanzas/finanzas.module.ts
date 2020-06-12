@@ -7,9 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { ChangeMoneyComponent } from './change-money/change-money.component';
+import { RateConversionComponent } from './rate-conversion/rate-conversion.component';
 
 @NgModule({
-  declarations: [HomeComponent, ChangeMoneyComponent],
+  declarations: [HomeComponent, ChangeMoneyComponent, RateConversionComponent],
   imports: [
     CommonModule,
     FinanzasRoutingModule,

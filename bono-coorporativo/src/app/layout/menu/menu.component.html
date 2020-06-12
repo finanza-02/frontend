@@ -1,26 +1,29 @@
-<div class="menu">
-  <div class="menu__link" (click)="title(null, '/finanzas')">
-    Home
+<div class="menu" *ngIf="toggle">
+  <div class="menu__container">
+    <div class="menu__link" (click)="title(null, '/finanzas')">
+      Home
+    </div>
+    <div
+      class="menu__link"
+      (click)="title('Cambio de Moneda', '/finanzas/cambio-moneda')"
+    >
+      Cambiar Moneda
+    </div>
+    <div
+      class="menu__link"
+      (click)="title('Conversión de tasas', '/finanzas/conversion-tasa')"
+    >
+      Convertir Tasas
+    </div>
+    <div
+      class="menu__link"
+      (click)="title('Calculo de Bono', '/finanzas/calculo-bono')"
+    >
+      Calcular Bono
+    </div>
+    <div class="menu__link" (click)="title(null, '/login')">
+      Salir
+    </div>
   </div>
-  <div
-    class="menu__link"
-    (click)="title('Cambio de Moneda', '/finanzas/cambio-moneda')"
-  >
-    Cambiar Moneda
-  </div>
-  <div
-    class="menu__link"
-    (click)="title('Conversión de tasas', '/finanzas/conversion-tasa')"
-  >
-    Convertir Tasas
-  </div>
-  <div
-    class="menu__link"
-    (click)="title('Calculo de Bono', '/finanzas/calculo-bono')"
-  >
-    Calcular Bono
-  </div>
-  <div class="menu__link" (click)="title(null, '/login')">
-    Salir
-  </div>
+  <div class="menu__complement" (click)="openAndCloseMenu()"></div>
 </div>

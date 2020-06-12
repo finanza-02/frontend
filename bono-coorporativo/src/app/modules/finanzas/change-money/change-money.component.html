@@ -3,6 +3,7 @@
     <mat-form-field class="change-money__element-input" appearance="outline">
       <mat-label>Monto a convertir</mat-label>
       <input
+        type="number"
         matInput
         placeholder="Monto a convertir"
         [(ngModel)]="coinSelected.amount"
@@ -62,6 +63,7 @@
       <mat-form-field class="change-money__element-input" appearance="outline">
         <mat-label>Monto convertido</mat-label>
         <input
+          type="number"
           matInput
           placeholder="Monto convertido"
           [(ngModel)]="coinConverted.amount"

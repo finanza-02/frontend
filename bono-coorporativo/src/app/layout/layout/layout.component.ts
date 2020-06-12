@@ -20,6 +20,8 @@ export class LayoutComponent implements OnInit {
   }
   changeTitle($event) {
     this.title = $event;
-    console.log($event);
+  }
+  eventToggle($event) {
+    this.toggle = $event;
   }
 }

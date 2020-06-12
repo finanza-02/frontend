@@ -2,15 +2,22 @@
 
 .menu {
   height: 90vh;
-  width: 60vw;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu__container {
+  height: 90vh;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   background-color: $primary;
   color: $text;
-  position: relative;
-  z-index: 1;
 }
 .menu__link {
   padding-top: 1rem;
@@ -22,4 +29,28 @@
 
 .menu__link:hover {
   background-color: #0f1d6e;
+}
+
+.menu__complement {
+  width: 40%;
+  height: 90vh;
+  position: relative;
+}
+
+@media screen and (min-width: 600px) {
+  .menu__container {
+    width: 50%;
+  }
+  .menu__complement {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .menu__container {
+    width: 20%;
+  }
+  .menu__complement {
+    width: 80%;
+  }
 }

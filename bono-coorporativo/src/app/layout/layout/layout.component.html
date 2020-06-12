@@ -7,8 +7,9 @@
   <div class="layout__content">
     <app-menu
       class="layout__menu"
-      *ngIf="toggle"
+      [toggle]="toggle"
       (eventTitle)="changeTitle($event)"
+      (eventToggle)="eventToggle($event)"
     ></app-menu>
     <router-outlet></router-outlet>
   </div>
