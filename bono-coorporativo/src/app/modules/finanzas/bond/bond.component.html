@@ -1,4 +1,4 @@
-<div class="bond">
+<div class="bond" *ngIf="!togglePaymentPlan">
   <div class="bond__pair-element-container">
     <mat-form-field class="bond__element-input" appearance="outline">
       <mat-label>Tasa Efectiva %</mat-label>
@@ -40,3 +40,8 @@
     Ver Plan de Pago
   </button>
 </div>
+
+<app-payment-plan
+  *ngIf="togglePaymentPlan"
+  (eventClosePaymentPlan)="openOrClosePaymentPlan()"
+></app-payment-plan>

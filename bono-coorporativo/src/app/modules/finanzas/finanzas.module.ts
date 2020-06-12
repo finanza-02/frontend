@@ -9,9 +9,10 @@ import { LayoutModule } from 'src/app/layout/layout.module';
 import { ChangeMoneyComponent } from './change-money/change-money.component';
 import { RateConversionComponent } from './rate-conversion/rate-conversion.component';
 import { BondComponent } from './bond/bond.component';
+import { PaymentPlanComponent } from './payment-plan/payment-plan.component';
 
 @NgModule({
-  declarations: [HomeComponent, ChangeMoneyComponent, RateConversionComponent, BondComponent],
+  declarations: [HomeComponent, ChangeMoneyComponent, RateConversionComponent, BondComponent, PaymentPlanComponent],
   imports: [
     CommonModule,
     FinanzasRoutingModule,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bond',
@@ -7,11 +6,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./bond.component.scss'],
 })
 export class BondComponent implements OnInit {
-  constructor(private router: Router) {}
+  togglePaymentPlan;
+
+  constructor() {}
 
   ngOnInit(): void {}
 
+  openOrClosePaymentPlan() {
+    this.togglePaymentPlan = !this.togglePaymentPlan;
+  }
+
   seePaymentPlan() {
-    this.router.navigate(['/finanzas/plan-de-pago']);
+    this.openOrClosePaymentPlan();
   }
 }

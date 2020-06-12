@@ -4,4 +4,6 @@ import { Coin } from './coin.model';
 export interface Bond {
   coin?: Coin;
   rate?: Rate;
+  TCEA?: number;
+  TEP?: number;
 }

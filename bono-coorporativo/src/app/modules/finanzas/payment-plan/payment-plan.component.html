@@ -1,0 +1,157 @@
+<div class="payment-plan">
+  <div class="payment-plan__report">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Frances">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="periodo">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.periodo }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInicial">
+            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInicial }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="interes">
+            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.interes }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amortizacion">
+            <mat-header-cell *matHeaderCellDef> Amortizacion </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.amortizacion }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoFinal">
+            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoFinal }}
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+      </mat-tab>
+      <mat-tab label="Aleman">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="periodo">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.periodo }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInicial">
+            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInicial }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="interes">
+            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.interes }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amortizacion">
+            <mat-header-cell *matHeaderCellDef> Amortizacion </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.amortizacion }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoFinal">
+            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoFinal }}
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+      </mat-tab>
+      <mat-tab label="Americano">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="periodo">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.periodo }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInicial">
+            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInicial }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="interes">
+            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.interes }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amortizacion">
+            <mat-header-cell *matHeaderCellDef> Amortizacion </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.amortizacion }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoFinal">
+            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoFinal }}
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="payment-plan__static">
+    <p>TEP: {{ bond.TEP }} % -> TCEA: {{ bond.TCEA }} %</p>
+
+    <div class="payment-plan__options">
+      <button mat-stroked-button color="primary" (click)="closePaymentPlan()">
+        Volver
+      </button>
+      <button mat-stroked-button color="primary" (click)="saveBond()">
+        Guardar
+      </button>
+    </div>
+  </div>
+</div>
