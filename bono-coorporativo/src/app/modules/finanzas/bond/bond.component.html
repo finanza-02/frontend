@@ -1,0 +1,42 @@
+<div class="bond">
+  <div class="bond__pair-element-container">
+    <mat-form-field class="bond__element-input" appearance="outline">
+      <mat-label>Tasa Efectiva %</mat-label>
+      <input type="number" matInput placeholder="Tasa Efectiva %" />
+    </mat-form-field>
+
+    <mat-form-field class="bond__element-select">
+      <mat-label>Tasa</mat-label>
+      <mat-select>
+        <mat-option>
+          TEA
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="bond__pair-element-container">
+    <mat-form-field class="bond__element-input" appearance="outline">
+      <mat-label>Valor Nominal</mat-label>
+      <input type="number" matInput placeholder="Valor Nominal" />
+    </mat-form-field>
+
+    <mat-form-field class="bond__element-select">
+      <mat-label>Moneda</mat-label>
+      <mat-select>
+        <mat-option>
+          Sol
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="bond__element-input" appearance="outline">
+    <mat-label>Nº Cuotas</mat-label>
+    <input type="number" matInput placeholder="Nº Cuotas" />
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" (click)="seePaymentPlan()">
+    Ver Plan de Pago
+  </button>
+</div>

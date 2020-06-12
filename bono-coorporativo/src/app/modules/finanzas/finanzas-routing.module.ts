@@ -4,6 +4,7 @@ import { LayoutComponent } from 'src/app/layout/layout/layout.component';
 import { HomeComponent } from './home/home.component';
 import { ChangeMoneyComponent } from './change-money/change-money.component';
 import { RateConversionComponent } from './rate-conversion/rate-conversion.component';
+import { BondComponent } from './bond/bond.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'conversion-tasa',
         component: RateConversionComponent,
+      },
+      {
+        path: 'calculo-bono',
+        component: BondComponent,
       },
     ],
   },
