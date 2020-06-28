@@ -1,8 +1,7 @@
 import { Change } from './change.model';
 export interface Coin {
-  key?: string;
-  description?: string;
+  id?: number;
+  nombre?: string;
+  simbolo?: string;
   amount?: number;
-  change?: Change[];
-  lastChange?: Change;
 }

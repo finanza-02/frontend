@@ -7,14 +7,16 @@
         matInput
         placeholder="Monto a convertir"
         [(ngModel)]="coinSelected.amount"
+        (keyup.enter)="converterCoin()"
+        (keydown)="hideInformation()"
       />
     </mat-form-field>
 
     <mat-form-field class="change-money__element-select">
       <mat-label>Moneda</mat-label>
-      <mat-select [(ngModel)]="coinSelected.key">
-        <mat-option *ngFor="let coin of coins" [value]="coin.key">
-          {{ coin.description }}
+      <mat-select [(ngModel)]="coinSelected.id">
+        <mat-option *ngFor="let coin of coins" [value]="coin.id">
+          {{ coin.nombre }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -28,26 +30,14 @@
       (click)="converterCoin()"
       >arrow_downward</mat-icon
     >
-    <div
-      class="change-money__additional-information"
-      *ngIf="coinConverted.lastChange != null"
-    >
+    <div class="change-money__additional-information" *ngIf="information">
       <p>
         La tasa de cambio fue de
-        {{
-          coinConverted.lastChange.change != null
-            ? coinConverted.lastChange.change
-            : coinConverted.lastChange.defaultChange
-        }}
-        por cada un {{ coinSelected.description }}
-      </p>
-      <p *ngIf="coinConverted.lastChange.dateUpdate != null">
-        Esta tasa fue actualizado desde el banco de origen de la moneda
-        {{ coinSelected.description }} a las
-        {{ coinConverted.lastChange.dateUpdate }}
+        {{ coinConverted.amount / coinSelected.amount | number: "1.3-3" }}
+        por cada un {{ coinSelected.nombre }}
       </p>
 
-      <p *ngIf="coinConverted.lastChange.defaultChange != null">
+      <p>
         Esta tasa es de caracter referencial
       </p>
     </div>
@@ -67,20 +57,21 @@
           matInput
           placeholder="Monto convertido"
           [(ngModel)]="coinConverted.amount"
+          (keydown)="hideInformation()"
         />
       </mat-form-field>
 
       <mat-form-field class="change-money__element-select">
         <mat-label>Moneda</mat-label>
-        <mat-select [(ngModel)]="coinConverted.key">
-          <mat-option *ngFor="let coin of coins" [value]="coin.key">
-            {{ coin.description }}
+        <mat-select [(ngModel)]="coinConverted.id">
+          <mat-option *ngFor="let coin of coins" [value]="coin.id">
+            {{ coin.nombre }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <button
-      *ngIf="coinConverted.amount > 0 && coinConverted.key != ''"
+      *ngIf="coinConverted.amount > 0 && coinConverted.id"
       mat-stroked-button
       color="primary"
       (click)="bond()"

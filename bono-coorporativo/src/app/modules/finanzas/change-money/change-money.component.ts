@@ -1,7 +1,8 @@
+import { FinanceService } from './../../../core/services/finance.service';
 import { Component, OnInit } from '@angular/core';
 import { Coin } from 'src/app/core/models/coin.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ChangeMoneyService } from 'src/app/core/services/change-money.service';
+import { Bond } from 'src/app/core/models/bond.model';
 
 @Component({
   selector: 'app-change-money',
@@ -9,63 +10,74 @@ import { ChangeMoneyService } from 'src/app/core/services/change-money.service';
   styleUrls: ['./change-money.component.scss'],
 })
 export class ChangeMoneyComponent implements OnInit {
-  coins: Array<Coin>;
-  coinSelected: Coin;
-  coinConverted: Coin;
+  coins: Coin[] = [];
+  coinSelected: Coin = {};
+  coinConverted: Coin = {};
+  information: boolean = false;
 
   constructor(
-    private matSnackBar: MatSnackBar,
-    private changeMoneyService: ChangeMoneyService
+    private financeService: FinanceService,
+    private matSnackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.coinSelected = {};
-    this.coinConverted = {};
-    this.coins = this.changeMoneyService.loadCoins();
-    this.coinConverted.key = this.coins[0].key;
+    this.loadCoins();
   }
 
-  converterCoin() {
-    if (
-      this.coinSelected.amount == null ||
-      this.coinSelected.amount < 0 ||
-      this.coinSelected.key == null ||
-      this.coinConverted.key == null
-    ) {
-      this.matSnackBar.open(
-        `Debes colocar 'Monto a convertir', su 'Moneda' asociada y la 'Moneda' de cambio`,
-        null,
-        {
-          duration: 5000,
-        }
-      );
+  async loadCoins() {
+    const response: any = await this.financeService.getCoins();
+    this.coins = response.data;
+  }
 
-      return;
-    } else {
-      this.changeMoneyService.converterCoin(
-        this.coinSelected,
-        this.coinConverted
+  async converterCoin() {
+    try {
+      if (
+        this.coinSelected.amount == null ||
+        this.coinSelected.amount < 0 ||
+        this.coinSelected.id == null ||
+        this.coinConverted.id == null
+      ) {
+        throw Error();
+      } else {
+        const response: any = await this.financeService.converterCoin(
+          this.coinSelected,
+          this.coinConverted
+        );
+        this.updateCoinWithInformation(this.coinSelected);
+        this.updateCoinWithInformation(this.coinConverted);
+        this.coinConverted.amount = response.data;
+        this.information = true;
+      }
+    } catch (error) {
+      this.matSnackBar.open(
+        `Debes colocar 'Monto a convertir', su 'Moneda' asociada y la 'Moneda' de cambio`
       );
     }
+  }
+
+  updateCoinWithInformation(coinUpdate: Coin) {
+    const index = this.coins.findIndex((coin) => {
+      return coin.id === coinUpdate.id;
+    });
+    if (index !== -1) {
+      coinUpdate.nombre = this.coins[index].nombre;
+      coinUpdate.simbolo = this.coins[index].simbolo;
+    }
+  }
+
+  hideInformation() {
+    this.information = false;
   }
 
   bond() {
     this.matSnackBar.open(
-      `Se guardo temporalmente ${this.coinConverted.amount}  ${this.coinConverted.description} para el calculo de Bono`,
-      null,
-      {
-        duration: 3000,
-      }
+      `Se guardo temporalmente ${this.coinConverted.amount}  ${this.coinConverted.simbolo} para el calculo de Bono`
     );
-
-    let bond = JSON.parse(localStorage.getItem('bond'));
-
+    let bond: Bond = JSON.parse(localStorage.getItem('bond'));
     if (bond == null) {
       bond = {};
     }
-
-    bond.coinConverted = this.coinConverted;
-
+    bond.coin = this.coinConverted;
     localStorage.setItem('bond', JSON.stringify(bond));
   }
 }
