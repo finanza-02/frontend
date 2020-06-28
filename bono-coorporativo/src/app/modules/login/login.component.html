@@ -9,11 +9,22 @@
   <div class="login__form">
     <mat-form-field appearance="outline">
       <mat-label>usuario</mat-label>
-      <input matInput placeholder="usuario" />
+      <input
+        matInput
+        placeholder="usuario"
+        [(ngModel)]="user.nombre"
+        (keyup.enter)="enter()"
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>password</mat-label>
-      <input matInput placeholder="password" type="password" />
+      <input
+        matInput
+        placeholder="password"
+        type="password"
+        [(ngModel)]="user.contrasena"
+        (keyup.enter)="enter()"
+      />
     </mat-form-field>
     <button mat-stroked-button color="primary" (click)="enter()">
       Ingresar

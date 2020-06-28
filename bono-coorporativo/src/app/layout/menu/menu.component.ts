@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../core/services/authentication.service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,13 +17,19 @@ export class MenuComponent implements OnInit {
   @Output()
   eventToggle: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {}
 
   title(content, router) {
     this.openAndCloseMenu();
     this.eventTitle.emit(content);
+    if (router === '/login') {
+      this.authenticationService.closeSession();
+    }
     this.router.navigate([router]);
   }
 
