@@ -2,14 +2,21 @@
   <div class="conversion-rate__pair-element-container">
     <mat-form-field class="conversion-rate__element-input" appearance="outline">
       <mat-label>Tasa Nominal %</mat-label>
-      <input type="number" matInput placeholder="Tasa Nominal %" />
+      <input
+        type="number"
+        matInput
+        placeholder="Tasa Nominal %"
+        [(ngModel)]="rateSelected.value"
+        (keyup.enter)="converterRate()"
+        (keydown)="clear()"
+      />
     </mat-form-field>
 
     <mat-form-field class="conversion-rate__element-select">
       <mat-label>TN</mat-label>
-      <mat-select>
-        <mat-option>
-          TNS
+      <mat-select [(ngModel)]="rateSelected.id">
+        <mat-option *ngFor="let rate of rates" [value]="rate.id">
+          {{ rate.nombre }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -19,12 +26,16 @@
     class="conversion-rate__convert-icon"
     aria-hidden="false"
     aria-label="Example home icon"
-    (click)="convert()"
+    (click)="converterRate()"
     >arrow_downward</mat-icon
   >
 
   <div
-    class="conversion-rate__bond-container conversion-rate__bond-container--border"
+    class="conversion-rate__bond-container"
+    [ngClass]="{
+      'conversion-rate__bond-container--border':
+        rateConverted.value && rateConverted.id
+    }"
   >
     <div class="conversion-rate__pair-element-container">
       <mat-form-field
@@ -32,19 +43,29 @@
         appearance="outline"
       >
         <mat-label>Tasa Efectiva %</mat-label>
-        <input type="number" matInput placeholder="Tasa Efectiva %" />
+        <input
+          type="number"
+          matInput
+          placeholder="Tasa Efectiva %"
+          [(ngModel)]="rateConverted.value"
+        />
       </mat-form-field>
 
       <mat-form-field class="conversion-rate__element-select">
         <mat-label>TE</mat-label>
-        <mat-select>
-          <mat-option>
-            TEA
+        <mat-select [(ngModel)]="rateConverted.id">
+          <mat-option *ngFor="let rate of rates" [value]="rate.id">
+            {{ rate.nombre }}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <button mat-stroked-button color="primary" (click)="bond()">
+    <button
+      mat-stroked-button
+      color="primary"
+      *ngIf="rateConverted.value && rateConverted.id"
+      (click)="bond()"
+    >
       Guardar
     </button>
   </div>

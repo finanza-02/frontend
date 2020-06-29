@@ -1,5 +1,5 @@
 export interface Rate {
-  key?: string;
-  description?: string;
-  rate?: number;
+  id?: number;
+  nombre?: string;
+  value?: number;
 }

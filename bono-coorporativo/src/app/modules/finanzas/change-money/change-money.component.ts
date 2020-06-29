@@ -67,6 +67,7 @@ export class ChangeMoneyComponent implements OnInit {
 
   hideInformation() {
     this.information = false;
+    this.coinConverted.amount = undefined;
   }
 
   bond() {
