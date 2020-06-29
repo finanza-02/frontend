@@ -5,7 +5,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -25,4 +25,8 @@
 .bond__element-select {
   margin: 0.5rem;
   width: 25%;
+}
+
+.bond_view {
+  margin-bottom: 2rem;
 }

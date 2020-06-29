@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Rate } from '../models/rate.model';
+import { Bond } from '../models/bond.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,10 +38,19 @@ export class FinanceService {
       .toPromise();
   }
 
-  async getRates() {
+  async getEffectiveRates() {
     return await this.httpClient
       .get(
         `${environment.api}/tasas-efectivas`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async getNominalRates() {
+    return await this.httpClient
+      .get(
+        `${environment.api}/tasas-nominales`,
         this.authenticationService.getHeaderWithAuthorization()
       )
       .toPromise();
@@ -55,6 +65,64 @@ export class FinanceService {
           tasaNominalId: rateSelected.id,
           tasaEfectivaId: rateConverted.id,
         },
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async saveBond(bond: Bond) {
+    bond.tasaDescuento = bond.tasaDescuento / 100;
+    bond.valorTasaEfectiva = bond.valorTasaEfectiva / 100;
+    bond.fechaCreacion = new Date();
+    return await this.httpClient
+      .post(
+        `${environment.api}/add-bono`,
+        bond,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async getBond(idBond: number) {
+    return await this.httpClient
+      .get(
+        `${environment.api}/bono/${idBond}`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async deleteBond(idBond: number) {
+    return await this.httpClient
+      .delete(
+        `${environment.api}/bono/${idBond}`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async getAmericanPaymentPlan(idBond: number) {
+    return await this.httpClient
+      .get<any>(
+        `${environment.api}/flujo-caja?metodo=americano&bono_id=${idBond}`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async getGermanPaymentPlan(idBond: number) {
+    return await this.httpClient
+      .get<any>(
+        `${environment.api}/flujo-caja?metodo=aleman&bono_id=${idBond}`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
+  async getFrenchPaymentPlan(idBond: number) {
+    return await this.httpClient
+      .get<any>(
+        `${environment.api}/flujo-caja?metodo=frances&bono_id=${idBond}`,
         this.authenticationService.getHeaderWithAuthorization()
       )
       .toPromise();

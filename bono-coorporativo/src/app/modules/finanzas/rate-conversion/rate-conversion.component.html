@@ -15,7 +15,7 @@
     <mat-form-field class="conversion-rate__element-select">
       <mat-label>TN</mat-label>
       <mat-select [(ngModel)]="rateSelected.id">
-        <mat-option *ngFor="let rate of rates" [value]="rate.id">
+        <mat-option *ngFor="let rate of nominalRates" [value]="rate.id">
           {{ rate.nombre }}
         </mat-option>
       </mat-select>
@@ -54,7 +54,7 @@
       <mat-form-field class="conversion-rate__element-select">
         <mat-label>TE</mat-label>
         <mat-select [(ngModel)]="rateConverted.id">
-          <mat-option *ngFor="let rate of rates" [value]="rate.id">
+          <mat-option *ngFor="let rate of effectiveRates" [value]="rate.id">
             {{ rate.nombre }}
           </mat-option>
         </mat-select>

@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'finanzas',
-    canActivate: [AuthenticationGuard],
+    // canActivate: [AuthenticationGuard],
     loadChildren: () =>
       import('./modules/finanzas/finanzas.module').then(
         (m) => m.FinanzasModule

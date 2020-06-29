@@ -10,7 +10,8 @@ import { Bond } from 'src/app/core/models/bond.model';
   styleUrls: ['./rate-conversion.component.scss'],
 })
 export class RateConversionComponent implements OnInit {
-  rates: Rate[] = [];
+  effectiveRates: Rate[] = [];
+  nominalRates: Rate[] = [];
   rateSelected: Rate = {};
   rateConverted: Rate = {};
 
@@ -24,8 +25,11 @@ export class RateConversionComponent implements OnInit {
   }
 
   async loadRates() {
-    const response: any = await this.financeService.getRates();
-    this.rates = response.data;
+    const responseGetNominalRates: any = await this.financeService.getNominalRates();
+    this.nominalRates = responseGetNominalRates.data;
+
+    const responseEffectiveRates: any = await this.financeService.getEffectiveRates();
+    this.effectiveRates = responseEffectiveRates.data;
   }
 
   async converterRate() {
@@ -42,8 +46,8 @@ export class RateConversionComponent implements OnInit {
           this.rateSelected,
           this.rateConverted
         );
-        this.updateRateWithInformation(this.rateSelected);
-        this.updateRateWithInformation(this.rateConverted);
+        this.updateRateWithInformation(this.rateSelected, this.nominalRates);
+        this.updateRateWithInformation(this.rateConverted, this.effectiveRates);
         this.rateConverted.value = response.data * 100;
       }
     } catch (error) {
@@ -53,12 +57,12 @@ export class RateConversionComponent implements OnInit {
     }
   }
 
-  updateRateWithInformation(rateUpdate: Rate) {
-    const index = this.rates.findIndex((rate) => {
+  updateRateWithInformation(rateUpdate: Rate, rates: Rate[]) {
+    const index = rates.findIndex((rate) => {
       return rate.id === rateUpdate.id;
     });
     if (index !== -1) {
-      rateUpdate.nombre = this.rates[index].nombre;
+      rateUpdate.nombre = rates[index].nombre;
     }
   }
 
@@ -70,11 +74,11 @@ export class RateConversionComponent implements OnInit {
     this.matSnackBar.open(
       `Se guardo temporalmente ${this.rateConverted.value}% de  ${this.rateConverted.nombre} para el calculo de Bono`
     );
-    let bond: Bond = JSON.parse(localStorage.getItem('bond'));
+    let bond: Bond = JSON.parse(sessionStorage.getItem('bond'));
     if (bond == null) {
       bond = {};
     }
     bond.rate = this.rateConverted;
-    localStorage.setItem('bond', JSON.stringify(bond));
+    sessionStorage.setItem('bond', JSON.stringify(bond));
   }
 }

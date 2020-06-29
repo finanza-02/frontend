@@ -1,8 +1,14 @@
 <div class="payment-plan">
   <div class="payment-plan__report">
-    <mat-tab-group mat-align-tabs="center">
+    <mat-tab-group
+      mat-align-tabs="center"
+      (selectedTabChange)="selectedTabChange($event)"
+    >
       <mat-tab label="Frances">
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <mat-table
+          [dataSource]="frenchPaymentPlan.flujo"
+          class="mat-elevation-z8"
+        >
           <ng-container matColumnDef="periodo">
             <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
             <mat-cell *matCellDef="let element">
@@ -10,23 +16,11 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoInicial">
-            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+          <ng-container matColumnDef="cupon">
+            <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoInicial }}
+              {{ element.cupon }}
             </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="interes">
-            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              {{ element.interes }}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="cuota">
-            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="amortizacion">
@@ -36,10 +30,62 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoFinal">
-            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+          <ng-container matColumnDef="costosGastos">
+            <mat-header-cell *matHeaderCellDef> Costos </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoFinal }}
+              {{ element.costosGastos }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.cuota }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInsoluto">
+            <mat-header-cell *matHeaderCellDef>
+              Saldo Insoluto
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInsoluto }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="deudaExtinguida">
+            <mat-header-cell *matHeaderCellDef>
+              Deuda Extinguida
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.deudaExtinguida }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="valorActual">
+            <mat-header-cell *matHeaderCellDef>
+              Valor Actual
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.valorActual }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoEmisor">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Emisor
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoEmisor }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoBonista">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Bonista
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoBonista }}
             </mat-cell>
           </ng-container>
 
@@ -48,7 +94,10 @@
         </mat-table>
       </mat-tab>
       <mat-tab label="Aleman">
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <mat-table
+          [dataSource]="germanPaymentPlan.flujo"
+          class="mat-elevation-z8"
+        >
           <ng-container matColumnDef="periodo">
             <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
             <mat-cell *matCellDef="let element">
@@ -56,23 +105,11 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoInicial">
-            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+          <ng-container matColumnDef="cupon">
+            <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoInicial }}
+              {{ element.cupon }}
             </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="interes">
-            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              {{ element.interes }}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="cuota">
-            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="amortizacion">
@@ -82,10 +119,62 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoFinal">
-            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+          <ng-container matColumnDef="costosGastos">
+            <mat-header-cell *matHeaderCellDef> Costos </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoFinal }}
+              {{ element.costosGastos }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.cuota }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInsoluto">
+            <mat-header-cell *matHeaderCellDef>
+              Saldo Insoluto
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInsoluto }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="deudaExtinguida">
+            <mat-header-cell *matHeaderCellDef>
+              Deuda Extinguida
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.deudaExtinguida }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="valorActual">
+            <mat-header-cell *matHeaderCellDef>
+              Valor Actual
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.valorActual }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoEmisor">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Emisor
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoEmisor }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoBonista">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Bonista
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoBonista }}
             </mat-cell>
           </ng-container>
 
@@ -94,7 +183,10 @@
         </mat-table>
       </mat-tab>
       <mat-tab label="Americano">
-        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <mat-table
+          [dataSource]="americanPaymentPlan.flujo"
+          class="mat-elevation-z8"
+        >
           <ng-container matColumnDef="periodo">
             <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
             <mat-cell *matCellDef="let element">
@@ -102,23 +194,11 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoInicial">
-            <mat-header-cell *matHeaderCellDef> Saldo Inicial </mat-header-cell>
+          <ng-container matColumnDef="cupon">
+            <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoInicial }}
+              {{ element.cupon }}
             </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="interes">
-            <mat-header-cell *matHeaderCellDef> Interes </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              {{ element.interes }}
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="cuota">
-            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.cuota }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="amortizacion">
@@ -128,10 +208,62 @@
             </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="saldoFinal">
-            <mat-header-cell *matHeaderCellDef> Saldo Final </mat-header-cell>
+          <ng-container matColumnDef="costosGastos">
+            <mat-header-cell *matHeaderCellDef> Costos </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{ element.saldoFinal }}
+              {{ element.costosGastos }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cuota">
+            <mat-header-cell *matHeaderCellDef> Cuota </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.cuota }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="saldoInsoluto">
+            <mat-header-cell *matHeaderCellDef>
+              Saldo Insoluto
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.saldoInsoluto }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="deudaExtinguida">
+            <mat-header-cell *matHeaderCellDef>
+              Deuda Extinguida
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.deudaExtinguida }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="valorActual">
+            <mat-header-cell *matHeaderCellDef>
+              Valor Actual
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.valorActual }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoEmisor">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Emisor
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoEmisor }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="flujoBonista">
+            <mat-header-cell *matHeaderCellDef>
+              Flujo Bonista
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.flujoBonista }}
             </mat-cell>
           </ng-container>
 
@@ -143,14 +275,17 @@
   </div>
 
   <div class="payment-plan__static">
-    <p>TEP: {{ bond.TEP }} % -> TCEA: {{ bond.TCEA }} %</p>
+    <p>
+      TCEA-Bonista: {{ tceaBonista * 100 | number: "1.3-3" }} % -> TCEA-Emisor:
+      {{ tceaEmisor * 100 | number: "1.3-3" }} %
+    </p>
 
     <div class="payment-plan__options">
       <button mat-stroked-button color="primary" (click)="closePaymentPlan()">
         Volver
       </button>
-      <button mat-stroked-button color="primary" (click)="saveBond()">
-        Guardar
+      <button mat-stroked-button color="primary" (click)="deleteBond()">
+        Eliminar
       </button>
     </div>
   </div>

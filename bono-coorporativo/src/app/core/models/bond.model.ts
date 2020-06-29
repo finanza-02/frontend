@@ -4,6 +4,14 @@ import { Coin } from './coin.model';
 export interface Bond {
   coin?: Coin;
   rate?: Rate;
-  TCEA?: number;
-  TEP?: number;
+  id?: number;
+  tasaDescuento?: number;
+  valorTasaEfectiva?: number;
+  valorNominal?: number;
+  valorComercial?: number;
+  costosGastos?: number;
+  numeroCuotas?: number;
+  tasaEfectivaId?: any;
+  monedaId?: any;
+  fechaCreacion?: Date;
 }

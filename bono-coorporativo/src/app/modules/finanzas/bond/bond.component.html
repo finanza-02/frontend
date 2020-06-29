@@ -1,15 +1,32 @@
 <div class="bond" *ngIf="!togglePaymentPlan">
   <div class="bond__pair-element-container">
     <mat-form-field class="bond__element-input" appearance="outline">
+      <mat-label>Tasa de Descuento %</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Tasa de Descuento %"
+        [(ngModel)]="bond.tasaDescuento"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="bond__pair-element-container">
+    <mat-form-field class="bond__element-input" appearance="outline">
       <mat-label>Tasa Efectiva %</mat-label>
-      <input type="number" matInput placeholder="Tasa Efectiva %" />
+      <input
+        type="number"
+        matInput
+        placeholder="Tasa Efectiva %"
+        [(ngModel)]="bond.valorTasaEfectiva"
+      />
     </mat-form-field>
 
     <mat-form-field class="bond__element-select">
       <mat-label>Tasa</mat-label>
-      <mat-select>
-        <mat-option>
-          TEA
+      <mat-select [(ngModel)]="bond.tasaEfectivaId">
+        <mat-option *ngFor="let rate of rates" [value]="rate.id">
+          {{ rate.nombre }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -18,14 +35,61 @@
   <div class="bond__pair-element-container">
     <mat-form-field class="bond__element-input" appearance="outline">
       <mat-label>Valor Nominal</mat-label>
-      <input type="number" matInput placeholder="Valor Nominal" />
+      <input
+        type="number"
+        matInput
+        placeholder="Valor Nominal"
+        [(ngModel)]="bond.valorNominal"
+      />
     </mat-form-field>
 
     <mat-form-field class="bond__element-select">
       <mat-label>Moneda</mat-label>
-      <mat-select>
-        <mat-option>
-          Sol
+      <mat-select [(ngModel)]="bond.monedaId">
+        <mat-option *ngFor="let coin of coins" [value]="coin.id">
+          {{ coin.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="bond__pair-element-container">
+    <mat-form-field class="bond__element-input" appearance="outline">
+      <mat-label>Valor Comercial</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Valor Comercial"
+        [(ngModel)]="bond.valorComercial"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="bond__element-select">
+      <mat-label>Moneda</mat-label>
+      <mat-select [(ngModel)]="bond.monedaId">
+        <mat-option *ngFor="let coin of coins" [value]="coin.id">
+          {{ coin.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="bond__pair-element-container">
+    <mat-form-field class="bond__element-input" appearance="outline">
+      <mat-label>Costos y Gastos</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Costos y Gastos"
+        [(ngModel)]="bond.costosGastos"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="bond__element-select">
+      <mat-label>Moneda</mat-label>
+      <mat-select [(ngModel)]="bond.monedaId">
+        <mat-option *ngFor="let coin of coins" [value]="coin.id">
+          {{ coin.nombre }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -33,15 +97,26 @@
 
   <mat-form-field class="bond__element-input" appearance="outline">
     <mat-label>Nº Cuotas</mat-label>
-    <input type="number" matInput placeholder="Nº Cuotas" />
+    <input
+      type="number"
+      matInput
+      placeholder="Nº Cuotas"
+      [(ngModel)]="bond.numeroCuotas"
+    />
   </mat-form-field>
 
-  <button mat-stroked-button color="primary" (click)="seePaymentPlan()">
-    Ver Plan de Pago
+  <button
+    class="bond_view"
+    mat-stroked-button
+    color="primary"
+    (click)="generatePaymentPlan()"
+  >
+    Generar Plan de Pago
   </button>
 </div>
 
 <app-payment-plan
+  [bond]="bond"
   *ngIf="togglePaymentPlan"
   (eventClosePaymentPlan)="openOrClosePaymentPlan()"
 ></app-payment-plan>

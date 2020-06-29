@@ -74,11 +74,11 @@ export class ChangeMoneyComponent implements OnInit {
     this.matSnackBar.open(
       `Se guardo temporalmente ${this.coinConverted.amount}  ${this.coinConverted.simbolo} para el calculo de Bono`
     );
-    let bond: Bond = JSON.parse(localStorage.getItem('bond'));
+    let bond: Bond = JSON.parse(sessionStorage.getItem('bond'));
     if (bond == null) {
       bond = {};
     }
     bond.coin = this.coinConverted;
-    localStorage.setItem('bond', JSON.stringify(bond));
+    sessionStorage.setItem('bond', JSON.stringify(bond));
   }
 }
