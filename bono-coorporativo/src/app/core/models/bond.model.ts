@@ -11,7 +11,7 @@ export interface Bond {
   valorComercial?: number;
   costosGastos?: number;
   numeroCuotas?: number;
-  tasaEfectivaId?: any;
-  monedaId?: any;
+  tasaEfectivaId?: any | number;
+  monedaId?: any | number;
   fechaCreacion?: Date;
 }

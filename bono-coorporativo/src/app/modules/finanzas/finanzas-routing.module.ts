@@ -6,6 +6,7 @@ import { ChangeMoneyComponent } from './change-money/change-money.component';
 import { RateConversionComponent } from './rate-conversion/rate-conversion.component';
 import { BondComponent } from './bond/bond.component';
 import { AuthenticationGuard } from 'src/app/core/services/authentication.guard';
+import { BondListComponent } from './bond-list/bond-list.component';
 
 const routes: Routes = [
   {
@@ -28,9 +29,14 @@ const routes: Routes = [
         component: RateConversionComponent,
       },
       {
-        path: 'calculo-bono',
+        path: 'generar-bono',
         canActivate: [AuthenticationGuard],
         component: BondComponent,
+      },
+      {
+        path: 'mis-bonos',
+        canActivate: [AuthenticationGuard],
+        component: BondListComponent,
       },
     ],
   },

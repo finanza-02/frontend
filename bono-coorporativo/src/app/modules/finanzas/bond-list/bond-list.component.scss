@@ -1,0 +1,65 @@
+@import "src/styles-color.scss";
+
+.bond-list {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+  padding-top: 2rem;
+}
+
+.bond {
+  height: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem;
+  box-shadow: 10px 10px 34px -12px rgba(0, 0, 0, 0.75);
+  margin-bottom: 2rem;
+}
+
+.bond__element {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.bond__sub-element-left {
+  width: 50%;
+  text-align: left;
+}
+
+.bond__sub-element-right {
+  width: 40%;
+  text-align: left;
+}
+
+.bond__title {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .bond {
+    width: 50%;
+  }
+
+  .bond__element {
+    width: 50%;
+    text-align: left;
+  }
+}

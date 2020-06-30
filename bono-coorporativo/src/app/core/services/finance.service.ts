@@ -93,6 +93,15 @@ export class FinanceService {
       .toPromise();
   }
 
+  async getBonds() {
+    return await this.httpClient
+      .get(
+        `${environment.api}/bonos`,
+        this.authenticationService.getHeaderWithAuthorization()
+      )
+      .toPromise();
+  }
+
   async deleteBond(idBond: number) {
     return await this.httpClient
       .delete(

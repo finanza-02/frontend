@@ -1,0 +1,56 @@
+<div class="bond-list" *ngIf="!togglePaymentPlan">
+  <div class="bond" *ngFor="let bond of bonds" (click)="selectBond(bond)">
+    <div class="bond__title">
+      {{ bond.fechaCreacion | date: "medium" }}
+    </div>
+    <div class="bond__element">
+      <p class="bond__sub-element-left">
+        Tasa de Descuento:
+      </p>
+
+      <p class="bond__sub-element-right">{{ bond.tasaDescuento * 100 }}%</p>
+    </div>
+
+    <div class="bond__element">
+      <p class="bond__sub-element-left">
+        Tasa Efectiva:
+      </p>
+      <p class="bond__sub-element-right">
+        {{ bond.valorTasaEfectiva * 100 }}% {{ bond.tasaEfectivaId.nombre }}
+      </p>
+    </div>
+    <div class="bond__element">
+      <p class="bond__sub-element-left">
+        Valor Nominal:
+      </p>
+      <p class="bond__sub-element-right">
+        {{ bond.monedaId.simbolo }}{{ bond.valorNominal }}
+      </p>
+    </div>
+
+    <div class="bond__element">
+      <p class="bond__sub-element-left">Valor Comercial:</p>
+      <p class="bond__sub-element-right">
+        {{ bond.monedaId.simbolo }}{{ bond.valorComercial }}
+      </p>
+    </div>
+
+    <div class="bond__element">
+      <p class="bond__sub-element-left">Costos y Gastos:</p>
+      <p class="bond__sub-element-right">
+        {{ bond.monedaId.simbolo }}{{ bond.costosGastos }}
+      </p>
+    </div>
+
+    <div class="bond__element">
+      <p class="bond__sub-element-left">Numero de Cuotas:</p>
+      <p class="bond__sub-element-right">{{ bond.numeroCuotas }}</p>
+    </div>
+  </div>
+</div>
+
+<app-payment-plan
+  [bond]="bond"
+  *ngIf="togglePaymentPlan"
+  (eventClosePaymentPlan)="openOrClosePaymentPlan()"
+></app-payment-plan>

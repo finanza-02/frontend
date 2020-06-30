@@ -10,9 +10,10 @@ import { ChangeMoneyComponent } from './change-money/change-money.component';
 import { RateConversionComponent } from './rate-conversion/rate-conversion.component';
 import { BondComponent } from './bond/bond.component';
 import { PaymentPlanComponent } from './payment-plan/payment-plan.component';
+import { BondListComponent } from './bond-list/bond-list.component';
 
 @NgModule({
-  declarations: [HomeComponent, ChangeMoneyComponent, RateConversionComponent, BondComponent, PaymentPlanComponent],
+  declarations: [HomeComponent, ChangeMoneyComponent, RateConversionComponent, BondComponent, PaymentPlanComponent, BondListComponent],
   imports: [
     CommonModule,
     FinanzasRoutingModule,
