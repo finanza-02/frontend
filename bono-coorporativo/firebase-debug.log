@@ -1,0 +1,34 @@
+[debug] [2020-06-30T03:37:30.255Z] ----------------------------------------------------------------------
+[debug] [2020-06-30T03:37:30.258Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-06-30T03:37:30.258Z] CLI Version:   8.4.2
+[debug] [2020-06-30T03:37:30.259Z] Platform:      win32
+[debug] [2020-06-30T03:37:30.259Z] Node Version:  v12.18.0
+[debug] [2020-06-30T03:37:30.260Z] Time:          Mon Jun 29 2020 22:37:30 GMT-0500 (GMT-05:00)
+[debug] [2020-06-30T03:37:30.261Z] ----------------------------------------------------------------------
+[debug] [2020-06-30T03:37:30.261Z] 
+[debug] [2020-06-30T03:37:30.274Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-06-30T03:37:30.275Z] > authorizing via signed-in user
+[debug] [2020-06-30T03:37:30.275Z] [iam] checking project bono-coorporativo for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-06-30T03:37:30.280Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-06-30T03:37:30.280Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-06-30T03:37:30.676Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 30 Jun 2020 03:37:30 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-06-30T03:37:30.707Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bono-coorporativo:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-06-30T03:37:31.644Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 30 Jun 2020 03:37:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=532","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-06-30T03:37:31.648Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/bono-coorporativo  
+ 
+[debug] [2020-06-30T03:37:32.215Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 30 Jun 2020 03:37:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'bono-coorporativo'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-06-30T03:37:32.234Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/bono-coorporativo/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-06-30T03:37:33.874Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 30 Jun 2020 03:37:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-27=\":443\"; ma=2592000,h3-25=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[bono-coorporativo]: beginning deploy... 
+[info] i  hosting[bono-coorporativo]: found 30 files in dist/bono-coorporativo 
+[debug] [2020-06-30T03:37:33.975Z] [hosting] hash cache [ZGlzdFxib25vLWNvb3Jwb3JhdGl2bw] stored for 30 files
+[debug] [2020-06-30T03:37:33.977Z] [hosting][hash queue][FINAL] {"max":12,"min":1,"avg":1,"active":0,"complete":30,"success":30,"errored":0,"retried":0,"total":30,"elapsed":30}
+[debug] [2020-06-30T03:37:33.978Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/bono-coorporativo/versions/3c9b073931193649:populateFiles  
+ <request body omitted>

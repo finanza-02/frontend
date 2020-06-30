@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://tf-finanzas.andreschmx.vercel.app',
+  api: 'http://0f90bec09e6d.ngrok.io',
 };
