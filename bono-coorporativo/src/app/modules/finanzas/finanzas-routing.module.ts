@@ -14,22 +14,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
         component: HomeComponent,
       },
       {
         path: 'cambio-moneda',
-        // canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
         component: ChangeMoneyComponent,
       },
       {
         path: 'conversion-tasa',
-        // canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
         component: RateConversionComponent,
       },
       {
         path: 'calculo-bono',
-        // canActivate: [AuthenticationGuard],
+        canActivate: [AuthenticationGuard],
         component: BondComponent,
       },
     ],

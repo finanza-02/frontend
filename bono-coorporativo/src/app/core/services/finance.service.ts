@@ -71,13 +71,14 @@ export class FinanceService {
   }
 
   async saveBond(bond: Bond) {
-    bond.tasaDescuento = bond.tasaDescuento / 100;
-    bond.valorTasaEfectiva = bond.valorTasaEfectiva / 100;
-    bond.fechaCreacion = new Date();
+    const newBond = { ...bond };
+    newBond.tasaDescuento = bond.tasaDescuento / 100;
+    newBond.valorTasaEfectiva = bond.valorTasaEfectiva / 100;
+    newBond.fechaCreacion = new Date();
     return await this.httpClient
       .post(
         `${environment.api}/add-bono`,
-        bond,
+        newBond,
         this.authenticationService.getHeaderWithAuthorization()
       )
       .toPromise();

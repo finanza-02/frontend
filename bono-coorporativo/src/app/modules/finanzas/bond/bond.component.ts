@@ -23,8 +23,8 @@ export class BondComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.loadRates();
-    // this.loadCoins();
+    this.loadRates();
+    this.loadCoins();
   }
 
   async loadRates() {
