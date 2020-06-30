@@ -25,6 +25,22 @@ export class BondComponent implements OnInit {
   ngOnInit(): void {
     this.loadRates();
     this.loadCoins();
+    this.loadStorage();
+  }
+
+  loadStorage() {
+    const bond: Bond = JSON.parse(sessionStorage.getItem('bond'));
+    if (bond != null) {
+      if (bond.rate) {
+        this.bond.tasaEfectivaId = bond.rate.id;
+        this.bond.valorTasaEfectiva = bond.rate.value;
+      }
+
+      if (bond.coin) {
+        this.bond.monedaId = bond.coin.id;
+        this.bond.valorNominal = bond.coin.amount;
+      }
+    }
   }
 
   async loadRates() {

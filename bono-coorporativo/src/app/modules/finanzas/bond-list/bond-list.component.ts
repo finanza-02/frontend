@@ -25,6 +25,9 @@ export class BondListComponent implements OnInit {
   async loadBonds() {
     const response: any = await this.financeService.getBonds();
     this.bonds = response.data;
+    this.bonds.sort((bond1, bond2) =>
+      bond1.id < bond2.id ? 1 : -1
+    );
   }
 
   openOrClosePaymentPlan() {

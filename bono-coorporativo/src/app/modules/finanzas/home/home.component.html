@@ -1,39 +1,61 @@
 <div class="home">
-  <mat-card class="home__card">
-    <mat-card-header>
-      <mat-card-title>Calcular Bono</mat-card-title>
-      <mat-card-subtitle>Generar plan de pago</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Podra generar el plan de pago de su bono por los metodos frances, aleman
-        y americano.
-      </p>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="home__card">
-    <mat-card-header>
-      <mat-card-title>Convertir Tasas</mat-card-title>
-      <mat-card-subtitle>ejemplo: TNS a TEA</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Aca podra convertir sus tasas nominales a una tasa efectiva de periodo
-        elegido. La tasa efectiva calculada se copiara automaticamente al
-        calculo del bono.
-      </p>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="home__card">
-    <mat-card-header>
-      <mat-card-title>Cambiar Moneda</mat-card-title>
-      <mat-card-subtitle>ejemplo: soles a dolares</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Aca podra realizar cambio de moneda antes del calculo del bono. El
-        cambio realizado se copiara automaticamente al calculo del bono.
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <div (click)="go('/finanzas/generar-bono')">
+    <mat-card class="home__card">
+      <mat-card-header>
+        <mat-card-title>Generar Bono</mat-card-title>
+        <mat-card-subtitle
+          >Genera tu Bono y visualiza un plan de pago</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Podra generar el plan de pago de su bono por los metodos frances,
+          aleman y americano.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div (click)="go('/finanzas/mis-bonos')">
+    <mat-card class="home__card">
+      <mat-card-header>
+        <mat-card-title>Listar Bono</mat-card-title>
+        <mat-card-subtitle>Lista de Bonos generados</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Podra ver todos los bonos generados y los planes de pago asociados,
+          asi como eliminar el mismo si no es de su interes.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div (click)="go('/finanzas/conversion-tasa')">
+    <mat-card class="home__card">
+      <mat-card-header>
+        <mat-card-title>Convertir Tasas</mat-card-title>
+        <mat-card-subtitle>ejemplo: TNS a TEA</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Aca podra convertir sus tasas nominales a una tasa efectiva de periodo
+          elegido. La tasa efectiva calculada se copiara automaticamente al
+          calculo del bono.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div (click)="go('/finanzas/cambio-moneda')">
+    <mat-card class="home__card">
+      <mat-card-header>
+        <mat-card-title>Cambiar Moneda</mat-card-title>
+        <mat-card-subtitle>ejemplo: soles a dolares</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Aca podra realizar cambio de moneda antes del calculo del bono. El
+          cambio realizado se copiara automaticamente al calculo del bono.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
